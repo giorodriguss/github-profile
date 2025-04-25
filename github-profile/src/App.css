@@ -1,8 +1,19 @@
+:root {
+  --text-color: #333;
+  --background-color: #f5f5f5;
+}
+
+.dark-mode {
+  --text-color: #fff;
+  --background-color: #121212;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -24,9 +35,8 @@ h1 {
 .title {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  margin-bottom: 2rem;
+  margin: 0;
 }
 
 .github-logo {
@@ -155,4 +165,69 @@ h1 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .container {
+  background-color: #121212;
+}
+
+.dark-mode .title,
+.dark-mode .profile-header h2 {
+  color: #ffffff;
+}
+
+.dark-mode .search-container input {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+.dark-mode .profile-container {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .bio,
+.dark-mode .stat-label {
+  color: #aaa;
+}
+
+.dark-mode .profile-stats {
+  background-color: #252525;
+}
+
+.dark-mode .error {
+  background-color: #3a1a1a;
+  color: #ff6b6b;
+}
+
+.header {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative; 
+  margin-bottom: 2rem;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

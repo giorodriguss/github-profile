@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
-import { FaSearch } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { FaGithub, FaSearch, FaMoon, FaSun } from 'react-icons/fa';
 import './App.css';
 
 function App() {
@@ -8,6 +7,16 @@ function App() {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Adicionando modo noturno
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
 
   const handleSearch = async () => {
     if (!username) return;
@@ -30,12 +39,21 @@ function App() {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="container">
-      <h1 className="title">
-        <FaGithub className="github-logo" />
-        Perfil GitHub
-      </h1>
+    <div className={`container ${darkMode ? 'dark-mode' : ''}`}>
+      <div className="header">
+        <h1 className="title">
+          <FaGithub className="github-logo" />
+          Perfil GitHub
+        </h1>
+        <button onClick={toggleDarkMode} className="dark-mode-toggle">
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
+      </div>
       
       <div className="search-container">
         <input
@@ -88,4 +106,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
